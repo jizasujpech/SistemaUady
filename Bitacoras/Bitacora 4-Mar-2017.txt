@@ -1,0 +1,33 @@
+Empleado
+Clave 
+dependencia 
+Area
+Puesto
+
+Estudiante
+Matricula
+Escuela
+Licenciatura
+semestre
+
+Padre de familia
+Parentesco
+
+Otro
+Nada
+
+BITACORA - 04-Marzo-2016
+Realizar una ventana que va a servir para buscar y devolver los datos de un actor.
+Se propone poder buscar a través de la matricula o el nombre (nombre completo, o parcial)
+
+
+if(nombre, apellido 1 y 2) 
+update
+else
+insert 
+
+ambos casos devuelve el id del actor
+
+objEProblematica.IdActor = IdActor
+
+registraProblematica();

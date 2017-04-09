@@ -1,0 +1,30 @@
+Se tienen que habilitar la regla de entrada y la regla de salida para el firewall de windows para cada direccion IP que se vaya a conectar.
+
+Firewall -> Firewall con seguridad avanzada->Reglas de entrada->Personalizada->Todos los programas->IP remotas
+
+
+
+Ventana de busqueda de datos de usuario.
+Referencia: Diagrama 1, hecho por Mario. Escaneado por Mario.
+
+Se implementara un boton buscar, un boton limpiar y un boton "alta de problematica".
+
+
+
+Si el usuario "busca" se hara una consulta a la base de datos y se traera los datos.
+
+Esta venta POR DEFECTO TENDRA LOS CONTROLES DESHABILITADOS para modificar los datos del usuario. Se contara con un boton para "MODIFICAR" los datos del usuario. Cuando el usuario presione el boton "MODIFICAR" se procederan a habilitar los controles y se permitira la modificacion de los datos.
+
+
+Para dar de alta una problematica se tendran 3 posibles casos:
+1) Dar de alta el usuario y la problematica.
+2) Modificar al usuario y dar de alta a la problematica.
+3) Solamente dar de alta a la problematica y generar la relacion con el usuario.
+
+
+Si el usuario no "busca" e intenta "dar de alta la problematica", el boton alta de problematica tendra que hacer la consulta a la base de datos para determinar si se debe dar de alta o modificar al usuario.
+
+
+Si el usuario primero "busca" y luego intenta "dar de alta la problematica", el boton alta de problematica NO hara la consulta, por lo que previamente se tiene que programar la logica que le indicara si se debe dar de alta o modificar al usuario.
+
+

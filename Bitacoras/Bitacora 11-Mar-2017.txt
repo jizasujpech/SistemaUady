@@ -1,0 +1,11 @@
+Se decide tener una ventana por separado para poder hacer la busqueda de los datos del usuario.
+
+Esta ventana funcionara de la siguiente manera:
+
+Primero se eligira el tipo de actor mediante un control combobox.
+
+Posteriorme el usuario elegira, si teclea primero el nombre del actor (nombre, apellido1 y apellido2) o la matricula (clave de empleado).
+
+De acuerdo a esto, se decidira realizar la busqueda de los datos del usuario, ya sea primero por nombre o por matricula.
+
+
