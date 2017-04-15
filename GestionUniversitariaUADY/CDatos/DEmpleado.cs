@@ -39,7 +39,30 @@ namespace CDatos
 
                     query += "Empleado.ClaveEmpleado = @ClaveEmpleadoP";
                 else
-                    query += "Actor.Nombre = @NombreP AND Actor.Apellido1 = @Apellido1P AND Actor.Apellido2 = @Apellido2P ";
+                {
+                    string where = String.Empty;
+
+                    if (!String.IsNullOrEmpty(ObjEEmpleado.Nombre))
+                        where = "Actor.Nombre = @NombreP ";
+
+                    if (!String.IsNullOrEmpty(ObjEEmpleado.Apellido1))
+                    {
+                        if (!String.IsNullOrEmpty(where))
+                            where += "AND ";
+
+                        where += "Actor.Apellido1 = @Apellido1P ";
+                    }
+
+                    if (!String.IsNullOrEmpty(ObjEEmpleado.Apellido2))
+                    {
+                        if (!String.IsNullOrEmpty(where))
+                            where += "AND ";
+
+                        where += "AND Actor.Apellido2 = @Apellido2P ";
+                    }
+
+                    query += where;
+                }
 
                 Comandosql = new SqlCommand(query, Meconecto);
 
@@ -54,9 +77,14 @@ namespace CDatos
                     adapter.SelectCommand.Parameters.AddWithValue("@ClaveEmpleadoP", ObjEEmpleado.ClaveEmpleado);
                 else
                 {
-                    adapter.SelectCommand.Parameters.AddWithValue("@NombreP", ObjEEmpleado.objActor.Nombre);
-                    adapter.SelectCommand.Parameters.AddWithValue("@Apellido1P", ObjEEmpleado.objActor.Apellido1);
-                    adapter.SelectCommand.Parameters.AddWithValue("@Apellido2P", ObjEEmpleado.objActor.Apellido2);
+                    if (!String.IsNullOrEmpty(ObjEEmpleado.Nombre))
+                        adapter.SelectCommand.Parameters.AddWithValue("@NombreP", ObjEEmpleado.Nombre);
+
+                    if (!String.IsNullOrEmpty(ObjEEmpleado.Apellido1))
+                        adapter.SelectCommand.Parameters.AddWithValue("@Apellido1P", ObjEEmpleado.Apellido1);
+
+                    if (!String.IsNullOrEmpty(ObjEEmpleado.Apellido2))
+                        adapter.SelectCommand.Parameters.AddWithValue("@Apellido2P", ObjEEmpleado.Apellido2);
                 }
 
 
@@ -77,14 +105,14 @@ namespace CDatos
                     ObjEEmpleadoteDevuelto.Area = DrLleno["Area"].ToString();
                     ObjEEmpleadoteDevuelto.IdActor = Convert.ToInt32(DrLleno["IdActor"]);
 
-                    ObjEEmpleadoteDevuelto.objActor.IdActor = Convert.ToInt32(DrLleno["IdActor"]);
-                    ObjEEmpleadoteDevuelto.objActor.Nombre = DrLleno["Nombre"].ToString();
-                    ObjEEmpleadoteDevuelto.objActor.Apellido1 = DrLleno["Apellido1"].ToString();
-                    ObjEEmpleadoteDevuelto.objActor.Apellido2 = DrLleno["Apellido2"].ToString();
-                    ObjEEmpleadoteDevuelto.objActor.Correo = DrLleno["Correo"].ToString();
-                    ObjEEmpleadoteDevuelto.objActor.Telefono = Convert.ToInt64(DrLleno["Telefono"]);
+                    ObjEEmpleadoteDevuelto.IdActor = Convert.ToInt32(DrLleno["IdActor"]);
+                    ObjEEmpleadoteDevuelto.Nombre = DrLleno["Nombre"].ToString();
+                    ObjEEmpleadoteDevuelto.Apellido1 = DrLleno["Apellido1"].ToString();
+                    ObjEEmpleadoteDevuelto.Apellido2 = DrLleno["Apellido2"].ToString();
+                    ObjEEmpleadoteDevuelto.Correo = DrLleno["Correo"].ToString();
+                    ObjEEmpleadoteDevuelto.Telefono = Convert.ToInt64(DrLleno["Telefono"]);
 
-                    ObjEEmpleadoteDevuelto.objActor.ObjTipo.IdTipo = Convert.ToInt32(DrLleno["IdTipo"]);
+                    ObjEEmpleadoteDevuelto.ObjTipo.IdTipo = Convert.ToInt32(DrLleno["IdTipo"]);
                 }
 
 
@@ -99,6 +127,111 @@ namespace CDatos
             return ObjEEmpleadoteDevuelto;
         }
         #endregion
+        #region Obten Datos del Usuario/Get. DATATABLE 
+        //Se obtiene los datos del usuario por medio de objEacceso que se creo en el constructor
+        public DataTable GetDatosEmpleado_DataTable()
+        {
+            // EEmpleado ObjEEmpleadoteDevuelto = new EEmpleado();
+            DataTable dtResult = new DataTable();
+            try
+            {
+                ConexionesABD objConexionABD = new ConexionesABD();
+                Meconecto = objConexionABD.Meconecto;
+                string query = "Select  * from [Empleado] LEFT JOIN Actor ON Actor.IdActor = Empleado.IdActor where ";//@ para parametros
+
+                if (!string.IsNullOrEmpty(ObjEEmpleado.ClaveEmpleado))
+
+                    query += "Empleado.ClaveEmpleado = @ClaveEmpleadoP";
+                else
+                {
+                    string where = String.Empty;
+
+                    if (!String.IsNullOrEmpty(ObjEEmpleado.Nombre))
+                        where = "Actor.Nombre = @NombreP ";
+                     
+                    if(!String.IsNullOrEmpty(ObjEEmpleado.Apellido1))
+                    {
+                        if (!String.IsNullOrEmpty(where))
+                            where += "AND ";
+
+                        where += "Actor.Apellido1 = @Apellido1P ";
+                    }
+
+                    if (!String.IsNullOrEmpty(ObjEEmpleado.Apellido2))
+                    {
+                        if (!String.IsNullOrEmpty(where))
+                            where += "AND ";
+
+                        where += "AND Actor.Apellido2 = @Apellido2P ";
+                    }
+
+                    query += where;    
+                }
+                    
+
+                Comandosql = new SqlCommand(query, Meconecto);
+
+
+              //  DataSet DatasetLleno = new DataSet();
+
+                // Assumes that connection is a valid SqlConnection object.
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, Meconecto);
+
+                if (!string.IsNullOrEmpty(ObjEEmpleado.ClaveEmpleado))
+                    adapter.SelectCommand.Parameters.AddWithValue("@ClaveEmpleadoP", ObjEEmpleado.ClaveEmpleado);
+                else
+                {
+                    if (!String.IsNullOrEmpty(ObjEEmpleado.Nombre))
+                        adapter.SelectCommand.Parameters.AddWithValue("@NombreP", ObjEEmpleado.Nombre);
+
+                    if (!String.IsNullOrEmpty(ObjEEmpleado.Apellido1))
+                        adapter.SelectCommand.Parameters.AddWithValue("@Apellido1P", ObjEEmpleado.Apellido1);
+
+                    if (!String.IsNullOrEmpty(ObjEEmpleado.Apellido2))
+                        adapter.SelectCommand.Parameters.AddWithValue("@Apellido2P", ObjEEmpleado.Apellido2);
+                }
+
+
+
+
+
+                //  DataSet DSUsuario = new DataSet();// dataset de usuario
+                adapter.Fill(dtResult);
+
+               /* if (DatasetLleno.Tables[0].Rows.Count > 0)
+                {
+                    DataRow DrLleno = DatasetLleno.Tables[0].Rows[0];
+                    ObjEEmpleadoteDevuelto.IdEmpleado = Convert.ToInt32(DrLleno["IdEmpleado"]);
+                    ObjEEmpleadoteDevuelto.Puesto = DrLleno["Puesto"].ToString();
+                    ObjEEmpleadoteDevuelto.ClaveEmpleado = DrLleno["ClaveEmpleado"].ToString();
+                    ObjEEmpleadoteDevuelto.Dependencia = DrLleno["Dependencia"].ToString();
+                    //ObjEEmpleadoteDevuelto.IdTipo = Convert.ToInt32(DrLleno["IdTipo"]);
+                    ObjEEmpleadoteDevuelto.Area = DrLleno["Area"].ToString();
+                    ObjEEmpleadoteDevuelto.IdActor = Convert.ToInt32(DrLleno["IdActor"]);
+
+                    ObjEEmpleadoteDevuelto.IdActor = Convert.ToInt32(DrLleno["IdActor"]);
+                    ObjEEmpleadoteDevuelto.Nombre = DrLleno["Nombre"].ToString();
+                    ObjEEmpleadoteDevuelto.Apellido1 = DrLleno["Apellido1"].ToString();
+                    ObjEEmpleadoteDevuelto.Apellido2 = DrLleno["Apellido2"].ToString();
+                    ObjEEmpleadoteDevuelto.Correo = DrLleno["Correo"].ToString();
+                    ObjEEmpleadoteDevuelto.Telefono = Convert.ToInt64(DrLleno["Telefono"]);
+
+                    ObjEEmpleadoteDevuelto.ObjTipo.IdTipo = Convert.ToInt32(DrLleno["IdTipo"]);
+                }*/
+
+
+
+                objConexionABD.CerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return dtResult;
+        }
+        #endregion
 
         #region INSERTA DATOS EMPLEADO
         public EEmpleado AlmacenaDatosEmpleado()
@@ -111,7 +244,7 @@ namespace CDatos
                 Meconecto = objConexionABD.Meconecto;
 
 
-                DActor objDActor = new DActor(ObjEEmpleado.objActor);
+                DActor objDActor = new DActor(ObjEEmpleado);
                 ObjEEmpleado.IdActor = objDActor.AlmacenaDatosActor();
 
                 if (ObjEEmpleado.IdActor > 0)
@@ -141,7 +274,6 @@ namespace CDatos
 
             objEEmpleadoDevuelto.IdEmpleado = result;
             objEEmpleadoDevuelto.IdActor = ObjEEmpleado.IdActor;
-            objEEmpleadoDevuelto.objActor.IdActor = ObjEEmpleado.IdActor;
 
             return objEEmpleadoDevuelto;
         }
@@ -157,7 +289,7 @@ namespace CDatos
             try
             {
                 Meconecto = objConexionABD.Meconecto;
-                DActor objDActor = new DActor(ObjEEmpleado.objActor);
+                DActor objDActor = new DActor(ObjEEmpleado);
 
                 objDActor.actualizaDatosActor();
 

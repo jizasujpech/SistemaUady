@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace CEntidades
 {
-  public  class EEmpleado
+  public  class EEmpleado:EActor
     {
         public int IdEmpleado;
-        public int IdActor;
+        //public int IdActor;
         //public int IdTipo;
         public string ClaveEmpleado;
         public string Dependencia;
         public string Area;
         public string Puesto;
-        public EActor objActor;
+      /*  public EActor objActor;
 
         public EEmpleado()
         {
             objActor = new EActor();
-        }
+        }*/
     }
 }

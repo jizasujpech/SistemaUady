@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace CEntidades
 {
-    public class EPadreDeFamilia
+    public class EPadreDeFamilia:EActor
     {
         public int IdPadre;
         public int IdEstudiante;
         //public int IdTipo;
-        public string NombreP;
-        public string ApellidoPP;
-        public string ApellidoMP;
-        public string Correo;
-        public int Telefono;
+        //public string NombreP;
+        //public string ApellidoPP;
+        //public string ApellidoMP;
+        //public string Correo;
+        //public int Telefono;
      }
 }

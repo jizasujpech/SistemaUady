@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 using CEntidades;
 using CDatos;
 namespace CNegocio
@@ -22,6 +23,13 @@ namespace CNegocio
         {
             DEmpleado objDEmpleado = new DEmpleado(objEEmpleado);
             return objDEmpleado.GetDatosEmpleado();
+        }
+        #endregion
+        #region GET DATOS EMPLEADO
+        public DataTable getDatosEmpleado_DataTable()
+        {
+            DEmpleado objDEmpleado = new DEmpleado(objEEmpleado);
+            return objDEmpleado.GetDatosEmpleado_DataTable();
         }
         #endregion
 

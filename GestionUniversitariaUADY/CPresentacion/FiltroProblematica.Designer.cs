@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button2 = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.btnRegistrarSolicitud = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtApellido2 = new System.Windows.Forms.TextBox();
@@ -39,14 +40,14 @@
             this.reportesUADYDataSet1 = new CPresentacion.ReportesUADYDataSet1();
             this.txtTipo4 = new System.Windows.Forms.TextBox();
             this.txtTipo3 = new System.Windows.Forms.TextBox();
-            this.lblt3 = new System.Windows.Forms.Label();
-            this.lblt4 = new System.Windows.Forms.Label();
+            this.lblTipo3 = new System.Windows.Forms.Label();
+            this.lblTipo4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtTipo2 = new System.Windows.Forms.TextBox();
             this.txtTipo1 = new System.Windows.Forms.TextBox();
-            this.lblt2 = new System.Windows.Forms.Label();
-            this.lblt1 = new System.Windows.Forms.Label();
+            this.lblTipo2 = new System.Windows.Forms.Label();
+            this.lblTipo1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
@@ -57,38 +58,49 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tipoTableAdapter = new CPresentacion.ReportesUADYDataSet1TableAdapters.TipoTableAdapter();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.dtgvActores = new System.Windows.Forms.DataGridView();
+            this.ColumnaClave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaApellido1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaApellido2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaDependencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaArea = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaPuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tipoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportesUADYDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvActores)).BeginInit();
             this.SuspendLayout();
             // 
-            // button2
+            // btnRegistrarSolicitud
             // 
-            this.button2.BackColor = System.Drawing.Color.CadetBlue;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(572, 484);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 41);
-            this.button2.TabIndex = 80;
-            this.button2.Text = "Registrar Solicitud";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnRegistrarSolicitud.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnRegistrarSolicitud.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRegistrarSolicitud.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrarSolicitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarSolicitud.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnRegistrarSolicitud.Location = new System.Drawing.Point(406, 570);
+            this.btnRegistrarSolicitud.Name = "btnRegistrarSolicitud";
+            this.btnRegistrarSolicitud.Size = new System.Drawing.Size(98, 41);
+            this.btnRegistrarSolicitud.TabIndex = 80;
+            this.btnRegistrarSolicitud.Text = "Registrar Solicitud";
+            this.btnRegistrarSolicitud.UseVisualStyleBackColor = false;
+            this.btnRegistrarSolicitud.Click += new System.EventHandler(this.btnRegistrarSolicitud_Click);
             // 
             // btnModificar
             // 
             this.btnModificar.BackColor = System.Drawing.Color.CadetBlue;
             this.btnModificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnModificar.Enabled = false;
             this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnModificar.Location = new System.Drawing.Point(435, 484);
+            this.btnModificar.Location = new System.Drawing.Point(638, 330);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(98, 41);
             this.btnModificar.TabIndex = 79;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnBuscar
             // 
@@ -97,7 +109,7 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBuscar.Location = new System.Drawing.Point(298, 484);
+            this.btnBuscar.Location = new System.Drawing.Point(288, 570);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(98, 41);
             this.btnBuscar.TabIndex = 78;
@@ -133,6 +145,7 @@
             this.cmbTipo.Size = new System.Drawing.Size(165, 21);
             this.cmbTipo.TabIndex = 75;
             this.cmbTipo.ValueMember = "IdTipo";
+            this.cmbTipo.SelectedIndexChanged += new System.EventHandler(this.cmbTipo_SelectedIndexChanged);
             // 
             // tipoBindingSource
             // 
@@ -160,23 +173,23 @@
             this.txtTipo3.Size = new System.Drawing.Size(165, 20);
             this.txtTipo3.TabIndex = 73;
             // 
-            // lblt3
+            // lblTipo3
             // 
-            this.lblt3.AutoSize = true;
-            this.lblt3.Location = new System.Drawing.Point(529, 276);
-            this.lblt3.Name = "lblt3";
-            this.lblt3.Size = new System.Drawing.Size(40, 13);
-            this.lblt3.TabIndex = 72;
-            this.lblt3.Text = "Puesto";
+            this.lblTipo3.AutoSize = true;
+            this.lblTipo3.Location = new System.Drawing.Point(529, 276);
+            this.lblTipo3.Name = "lblTipo3";
+            this.lblTipo3.Size = new System.Drawing.Size(40, 13);
+            this.lblTipo3.TabIndex = 72;
+            this.lblTipo3.Text = "Puesto";
             // 
-            // lblt4
+            // lblTipo4
             // 
-            this.lblt4.AutoSize = true;
-            this.lblt4.Location = new System.Drawing.Point(529, 309);
-            this.lblt4.Name = "lblt4";
-            this.lblt4.Size = new System.Drawing.Size(29, 13);
-            this.lblt4.TabIndex = 71;
-            this.lblt4.Text = "Area";
+            this.lblTipo4.AutoSize = true;
+            this.lblTipo4.Location = new System.Drawing.Point(529, 309);
+            this.lblTipo4.Name = "lblTipo4";
+            this.lblTipo4.Size = new System.Drawing.Size(29, 13);
+            this.lblTipo4.TabIndex = 71;
+            this.lblTipo4.Text = "Area";
             // 
             // label10
             // 
@@ -212,23 +225,23 @@
             this.txtTipo1.Size = new System.Drawing.Size(165, 20);
             this.txtTipo1.TabIndex = 67;
             // 
-            // lblt2
+            // lblTipo2
             // 
-            this.lblt2.AutoSize = true;
-            this.lblt2.Location = new System.Drawing.Point(529, 243);
-            this.lblt2.Name = "lblt2";
-            this.lblt2.Size = new System.Drawing.Size(71, 13);
-            this.lblt2.TabIndex = 66;
-            this.lblt2.Text = "Dependencia";
+            this.lblTipo2.AutoSize = true;
+            this.lblTipo2.Location = new System.Drawing.Point(529, 243);
+            this.lblTipo2.Name = "lblTipo2";
+            this.lblTipo2.Size = new System.Drawing.Size(71, 13);
+            this.lblTipo2.TabIndex = 66;
+            this.lblTipo2.Text = "Dependencia";
             // 
-            // lblt1
+            // lblTipo1
             // 
-            this.lblt1.AutoSize = true;
-            this.lblt1.Location = new System.Drawing.Point(529, 214);
-            this.lblt1.Name = "lblt1";
-            this.lblt1.Size = new System.Drawing.Size(34, 13);
-            this.lblt1.TabIndex = 65;
-            this.lblt1.Text = "Clave";
+            this.lblTipo1.AutoSize = true;
+            this.lblTipo1.Location = new System.Drawing.Point(529, 214);
+            this.lblTipo1.Name = "lblTipo1";
+            this.lblTipo1.Size = new System.Drawing.Size(34, 13);
+            this.lblTipo1.TabIndex = 65;
+            this.lblTipo1.Text = "Clave";
             // 
             // label7
             // 
@@ -312,21 +325,82 @@
             // 
             this.tipoTableAdapter.ClearBeforeFill = true;
             // 
-            // listView1
+            // dtgvActores
             // 
-            this.listView1.Location = new System.Drawing.Point(56, 384);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(822, 97);
-            this.listView1.TabIndex = 81;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.dtgvActores.AllowUserToAddRows = false;
+            this.dtgvActores.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.dtgvActores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgvActores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvActores.BackgroundColor = System.Drawing.Color.White;
+            this.dtgvActores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvActores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnaClave,
+            this.ColumnaNombre,
+            this.ColumnaApellido1,
+            this.ColumnaApellido2,
+            this.ColumnaDependencia,
+            this.ColumnaArea,
+            this.ColumnaPuesto});
+            this.dtgvActores.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dtgvActores.Location = new System.Drawing.Point(12, 391);
+            this.dtgvActores.MultiSelect = false;
+            this.dtgvActores.Name = "dtgvActores";
+            this.dtgvActores.ReadOnly = true;
+            this.dtgvActores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvActores.Size = new System.Drawing.Size(944, 169);
+            this.dtgvActores.TabIndex = 81;
+            this.dtgvActores.Click += new System.EventHandler(this.dtgvActores_Click);
+            // 
+            // ColumnaClave
+            // 
+            this.ColumnaClave.HeaderText = "Clave";
+            this.ColumnaClave.Name = "ColumnaClave";
+            this.ColumnaClave.ReadOnly = true;
+            // 
+            // ColumnaNombre
+            // 
+            this.ColumnaNombre.HeaderText = "Nombre";
+            this.ColumnaNombre.Name = "ColumnaNombre";
+            this.ColumnaNombre.ReadOnly = true;
+            // 
+            // ColumnaApellido1
+            // 
+            this.ColumnaApellido1.HeaderText = "Apellido P.";
+            this.ColumnaApellido1.Name = "ColumnaApellido1";
+            this.ColumnaApellido1.ReadOnly = true;
+            // 
+            // ColumnaApellido2
+            // 
+            this.ColumnaApellido2.HeaderText = "Apellido M.";
+            this.ColumnaApellido2.Name = "ColumnaApellido2";
+            this.ColumnaApellido2.ReadOnly = true;
+            // 
+            // ColumnaDependencia
+            // 
+            this.ColumnaDependencia.HeaderText = "Dependencia";
+            this.ColumnaDependencia.Name = "ColumnaDependencia";
+            this.ColumnaDependencia.ReadOnly = true;
+            // 
+            // ColumnaArea
+            // 
+            this.ColumnaArea.HeaderText = "Area";
+            this.ColumnaArea.Name = "ColumnaArea";
+            this.ColumnaArea.ReadOnly = true;
+            // 
+            // ColumnaPuesto
+            // 
+            this.ColumnaPuesto.HeaderText = "Puesto";
+            this.ColumnaPuesto.Name = "ColumnaPuesto";
+            this.ColumnaPuesto.ReadOnly = true;
             // 
             // FiltroProblematica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 623);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.dtgvActores);
+            this.Controls.Add(this.btnRegistrarSolicitud);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtApellido2);
@@ -334,14 +408,14 @@
             this.Controls.Add(this.cmbTipo);
             this.Controls.Add(this.txtTipo4);
             this.Controls.Add(this.txtTipo3);
-            this.Controls.Add(this.lblt3);
-            this.Controls.Add(this.lblt4);
+            this.Controls.Add(this.lblTipo3);
+            this.Controls.Add(this.lblTipo4);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtTipo2);
             this.Controls.Add(this.txtTipo1);
-            this.Controls.Add(this.lblt2);
-            this.Controls.Add(this.lblt1);
+            this.Controls.Add(this.lblTipo2);
+            this.Controls.Add(this.lblTipo1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.txtTelefono);
@@ -356,6 +430,7 @@
             this.Load += new System.EventHandler(this.FiltroProblematica_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tipoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportesUADYDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvActores)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -363,7 +438,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnRegistrarSolicitud;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtApellido2;
@@ -371,14 +446,14 @@
         private System.Windows.Forms.ComboBox cmbTipo;
         private System.Windows.Forms.TextBox txtTipo4;
         private System.Windows.Forms.TextBox txtTipo3;
-        private System.Windows.Forms.Label lblt3;
-        private System.Windows.Forms.Label lblt4;
+        private System.Windows.Forms.Label lblTipo3;
+        private System.Windows.Forms.Label lblTipo4;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtTipo2;
         private System.Windows.Forms.TextBox txtTipo1;
-        private System.Windows.Forms.Label lblt2;
-        private System.Windows.Forms.Label lblt1;
+        private System.Windows.Forms.Label lblTipo2;
+        private System.Windows.Forms.Label lblTipo1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.TextBox txtTelefono;
@@ -391,6 +466,13 @@
         private ReportesUADYDataSet1 reportesUADYDataSet1;
         private System.Windows.Forms.BindingSource tipoBindingSource;
         private ReportesUADYDataSet1TableAdapters.TipoTableAdapter tipoTableAdapter;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.DataGridView dtgvActores;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaClave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaApellido1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaApellido2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaDependencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaArea;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaPuesto;
     }
 }

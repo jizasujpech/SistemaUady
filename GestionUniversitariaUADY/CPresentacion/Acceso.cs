@@ -39,8 +39,8 @@ namespace CPresentacion
                     objFiltroProblematica.Show();
 
 
-                    //RegistroActor sevaaregistro = new RegistroActor(ObjDAcceso);
-                    //sevaaregistro.Show();
+                   /* RegistroActor sevaaregistro = new RegistroActor(ObjDAcceso);
+                    sevaaregistro.Show();*/
                     this.Hide();
 
 

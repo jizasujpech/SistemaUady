@@ -120,19 +120,23 @@ namespace CPresentacion
             ObjEEstudiante.Escuela = txtTipo2.Text;
             ObjEEstudiante.Licenciatura = txtTipo3.Text;
             ObjEEstudiante.Semestre = Convert.ToInt32(txtTipo4.Text);
-            ObjEEstudiante.objActor = ObjEActor;
             //ObjEEstudiante.IdTipo = ObjEActor.ObjTipo.IdTipo;
          }
         #endregion
         #region Llenado Obj Empleado
         private void LlenaObjEmpleado()
         {
-            
+            ObjEEmpleado.Nombre = txtNombreR.Text;
+            ObjEEmpleado.Apellido1 = txtApellidoPR.Text;
+            ObjEEmpleado.Apellido2 = txtApellidoMR.Text;
+            ObjEEmpleado.Telefono = Convert.ToInt64(txtTelefono.Text);
+            ObjEEmpleado.Correo = txtCorreoR.Text;
+
+
             ObjEEmpleado.ClaveEmpleado = txtTipo1.Text;
             ObjEEmpleado.Dependencia = txtTipo2.Text;
             ObjEEmpleado.Area = txtTipo3.Text;
             ObjEEmpleado.Puesto = txtTipo4.Text;
-            ObjEEmpleado.objActor = ObjEActor;
             //ObjEEmpleado.IdTipo = ObjEActor.ObjTipo.IdTipo;
         }
         #endregion
@@ -455,9 +459,9 @@ namespace CPresentacion
             {
                 case 0:
                     {
-                        ObjEEmpleado.objActor.Nombre = txtNombreR.Text;
-                        ObjEEmpleado.objActor.Apellido1 = txtApellidoPR.Text;
-                        ObjEEmpleado.objActor.Apellido2 = txtApellidoMR.Text;
+                        ObjEEmpleado.Nombre = txtNombreR.Text;
+                        ObjEEmpleado.Apellido1 = txtApellidoPR.Text;
+                        ObjEEmpleado.Apellido2 = txtApellidoMR.Text;
 
                         llenaControlesEmpleado();
                         break;
@@ -465,9 +469,9 @@ namespace CPresentacion
 
                 case 1:
                     {
-                        ObjEEstudiante.objActor.Nombre = txtNombreR.Text;
-                        ObjEEstudiante.objActor.Apellido1 = txtApellidoPR.Text;
-                        ObjEEstudiante.objActor.Apellido2 = txtApellidoMR.Text;
+                        ObjEEstudiante.Nombre = txtNombreR.Text;
+                        ObjEEstudiante.Apellido1 = txtApellidoPR.Text;
+                        ObjEEstudiante.Apellido2 = txtApellidoMR.Text;
 
                         llenaControlesEstudiante();
                         break;
@@ -511,11 +515,11 @@ namespace CPresentacion
                 txtTipo2.Text = ObjEEstudiante.Escuela;
                 txtTipo4.Text = ObjEEstudiante.Semestre.ToString();
 
-                txtNombreR.Text = ObjEEstudiante.objActor.Nombre;
-                txtApellidoPR.Text = ObjEEstudiante.objActor.Apellido1;
-                txtApellidoMR.Text = ObjEEstudiante.objActor.Apellido2;
-                txtCorreoR.Text = ObjEEstudiante.objActor.Correo;
-                txtTelefono.Text = ObjEEstudiante.objActor.Telefono.ToString();
+                txtNombreR.Text = ObjEEstudiante.Nombre;
+                txtApellidoPR.Text = ObjEEstudiante.Apellido1;
+                txtApellidoMR.Text = ObjEEstudiante.Apellido2;
+                txtCorreoR.Text = ObjEEstudiante.Correo;
+                txtTelefono.Text = ObjEEstudiante.Telefono.ToString();
             }
          
         }
@@ -533,11 +537,11 @@ namespace CPresentacion
                 txtTipo3.Text = ObjEEmpleado.Area;             
                 txtTipo4.Text = ObjEEmpleado.Puesto.ToString();
 
-                txtNombreR.Text = ObjEEmpleado.objActor.Nombre;
-                txtApellidoPR.Text = ObjEEmpleado.objActor.Apellido1;
-                txtApellidoMR.Text = ObjEEmpleado.objActor.Apellido2;
-                txtCorreoR.Text = ObjEEmpleado.objActor.Correo;
-                txtTelefono.Text = ObjEEmpleado.objActor.Telefono.ToString();
+                txtNombreR.Text = ObjEEmpleado.Nombre;
+                txtApellidoPR.Text = ObjEEmpleado.Apellido1;
+                txtApellidoMR.Text = ObjEEmpleado.Apellido2;
+                txtCorreoR.Text = ObjEEmpleado.Correo;
+                txtTelefono.Text = ObjEEmpleado.Telefono.ToString();
             }
 
         }

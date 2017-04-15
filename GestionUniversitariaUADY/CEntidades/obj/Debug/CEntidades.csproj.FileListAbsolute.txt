@@ -7,3 +7,4 @@ C:\Users\MarioEGM\Desktop\UADY\Proyecto de SW\GestionUniversitariaUADY\CEntidade
 C:\Users\MarioEGM\Desktop\UADY\Proyecto de SW\GestionUniversitariaUADY\CEntidades\bin\Debug\CEntidades.pdb
 C:\Users\MarioEGM\Desktop\UADY\Proyecto de SW\GestionUniversitariaUADY\CEntidades\obj\Debug\CEntidades.dll
 C:\Users\MarioEGM\Desktop\UADY\Proyecto de SW\GestionUniversitariaUADY\CEntidades\obj\Debug\CEntidades.pdb
+C:\Users\MarioEGM\Desktop\UADY\Proyecto de SW\GestionUniversitariaUADY\CEntidades\obj\Debug\CEntidades.csprojResolveAssemblyReference.cache

@@ -55,9 +55,9 @@ namespace CDatos
                     adapter.SelectCommand.Parameters.AddWithValue("@MatriculaP", ObjEEstudiante.Matricula);
                 else
                 {
-                    adapter.SelectCommand.Parameters.AddWithValue("@NombreP", ObjEEstudiante.objActor.Nombre);
-                    adapter.SelectCommand.Parameters.AddWithValue("@Apellido1P", ObjEEstudiante.objActor.Apellido1);
-                    adapter.SelectCommand.Parameters.AddWithValue("@Apellido2P", ObjEEstudiante.objActor.Apellido2);
+                    adapter.SelectCommand.Parameters.AddWithValue("@NombreP", ObjEEstudiante.Nombre);
+                    adapter.SelectCommand.Parameters.AddWithValue("@Apellido1P", ObjEEstudiante.Apellido1);
+                    adapter.SelectCommand.Parameters.AddWithValue("@Apellido2P", ObjEEstudiante.Apellido2);
                 }
 
 
@@ -78,14 +78,14 @@ namespace CDatos
                     ObjEEstudiannteDevuelto.Escuela = DrLleno["Escuela"].ToString();
                     ObjEEstudiannteDevuelto.IdActor = Convert.ToInt32(DrLleno["IdActor"]);
 
-                    ObjEEstudiannteDevuelto.objActor.IdActor = Convert.ToInt32(DrLleno["IdActor"]);
-                    ObjEEstudiannteDevuelto.objActor.Nombre = DrLleno["Nombre"].ToString();
-                    ObjEEstudiannteDevuelto.objActor.Apellido1 = DrLleno["Apellido1"].ToString();
-                    ObjEEstudiannteDevuelto.objActor.Apellido2 = DrLleno["Apellido2"].ToString();
-                    ObjEEstudiannteDevuelto.objActor.Correo = DrLleno["Correo"].ToString();
-                    ObjEEstudiannteDevuelto.objActor.Telefono = Convert.ToInt64(DrLleno["Telefono"]);
+                    ObjEEstudiannteDevuelto.IdActor = Convert.ToInt32(DrLleno["IdActor"]);
+                    ObjEEstudiannteDevuelto.Nombre = DrLleno["Nombre"].ToString();
+                    ObjEEstudiannteDevuelto.Apellido1 = DrLleno["Apellido1"].ToString();
+                    ObjEEstudiannteDevuelto.Apellido2 = DrLleno["Apellido2"].ToString();
+                    ObjEEstudiannteDevuelto.Correo = DrLleno["Correo"].ToString();
+                    ObjEEstudiannteDevuelto.Telefono = Convert.ToInt64(DrLleno["Telefono"]);
 
-                    ObjEEstudiannteDevuelto.objActor.ObjTipo.IdTipo = Convert.ToInt32(DrLleno["IdTipo"]);
+                    ObjEEstudiannteDevuelto.ObjTipo.IdTipo = Convert.ToInt32(DrLleno["IdTipo"]);
                 }
                    
 
@@ -112,7 +112,7 @@ namespace CDatos
                 Meconecto = objConexionABD.Meconecto;
                
 
-                DActor objDActor = new DActor(ObjEEstudiante.objActor);
+                DActor objDActor = new DActor(ObjEEstudiante);
                 ObjEEstudiante.IdActor = objDActor.AlmacenaDatosActor();
 
                 if(ObjEEstudiante.IdActor > 0)
@@ -142,7 +142,6 @@ namespace CDatos
 
             objEEstudianteDevuelto.IdEstudiante = result;
             objEEstudianteDevuelto.IdActor = ObjEEstudiante.IdActor;
-            objEEstudianteDevuelto.objActor.IdActor = ObjEEstudiante.IdActor;
 
             return objEEstudianteDevuelto;
         }
@@ -158,7 +157,7 @@ namespace CDatos
             try
             {
                 Meconecto = objConexionABD.Meconecto;
-                DActor objDActor = new DActor(ObjEEstudiante.objActor);
+                DActor objDActor = new DActor(ObjEEstudiante);
 
                 objDActor.actualizaDatosActor();
 
