@@ -17,36 +17,33 @@ namespace CPresentacion
 
     public partial class RegistroActor : Form
     {
-        EActor  ObjEActor;
+        //EActor  ObjEActor;
         EProblematica ObjEProblematica;
-        EEstudiante ObjEEstudiante;
-        EEmpleado ObjEEmpleado;
-        EPadreDeFamilia ObjEPadreDeFamilia;
+        //EEstudiante ObjEEstudiante;
+        //EEmpleado ObjEEmpleado;
+        //EPadreDeFamilia ObjEPadreDeFamilia;
         EAcceso ObjEAcceso;
-               
-        //ETipo ObjTipo;
-        public RegistroActor(EAcceso ObjAcceso)
+        //int tipoUsuario;
+        #region CONSRUCTORES
+        public RegistroActor(EAcceso ObjAcceso, int idActor)
         {
 
             InitializeComponent();
             this.ObjEAcceso = ObjAcceso;
-
-            ObjEActor = new EActor();
-            ObjEEstudiante = new EEstudiante();
             ObjEProblematica = new EProblematica();
-            ObjEEmpleado = new EEmpleado();
-            ObjEPadreDeFamilia = new EPadreDeFamilia();
+            ObjEProblematica.idActor = idActor;
         }
+        #endregion
 
         #region EVENTO LOAD - Llenado Registro Actor
         private void RegistroActor_Load(object sender, EventArgs e)
         {
-            ETipo ObjEtipo = new ETipo();
+           /* ETipo ObjEtipo = new ETipo();
             NTipo ObjNTipo = new NTipo(ObjEtipo);
            
             cmbTipo.DisplayMember = "Descripcion";
             cmbTipo.ValueMember = "IdTipo";
-            cmbTipo.DataSource = ObjNTipo.ConsultarLosTipos();
+            cmbTipo.DataSource = ObjNTipo.ConsultarLosTipos();  */
 
 
             NAcceso objNAcceso = new NAcceso(ObjEAcceso);
@@ -57,7 +54,7 @@ namespace CPresentacion
          }
         #endregion
         #region Llenado Obj Actor
-        private void LlenaObjActor()
+      /*  private void LlenaObjActor()
         {
            
             ObjEActor.Nombre = txtNombreR.Text;
@@ -83,9 +80,9 @@ namespace CPresentacion
 
             }
 
-            LlenadoObjTipo();
+            LlenadoObjTipo(); 
 
-         }
+         }*/
         #endregion
         #region Llenado Obj Problematica
         private void LlenaObjProblematica()
@@ -113,7 +110,7 @@ namespace CPresentacion
         }
         #endregion
         #region Llenado Obj Estudiante
-        private void LlenaObjEstudiante()
+      /*  private void LlenaObjEstudiante()
         {
            
             ObjEEstudiante.Matricula = txtTipo1.Text;
@@ -121,10 +118,10 @@ namespace CPresentacion
             ObjEEstudiante.Licenciatura = txtTipo3.Text;
             ObjEEstudiante.Semestre = Convert.ToInt32(txtTipo4.Text);
             //ObjEEstudiante.IdTipo = ObjEActor.ObjTipo.IdTipo;
-         }
+         }   */
         #endregion
         #region Llenado Obj Empleado
-        private void LlenaObjEmpleado()
+       /* private void LlenaObjEmpleado()
         {
             ObjEEmpleado.Nombre = txtNombreR.Text;
             ObjEEmpleado.Apellido1 = txtApellidoPR.Text;
@@ -137,24 +134,24 @@ namespace CPresentacion
             ObjEEmpleado.Dependencia = txtTipo2.Text;
             ObjEEmpleado.Area = txtTipo3.Text;
             ObjEEmpleado.Puesto = txtTipo4.Text;
-            //ObjEEmpleado.IdTipo = ObjEActor.ObjTipo.IdTipo;
-        }
+            //ObjEEmpleado.IdTipo = ObjEActor.ObjTipo.IdTipo; 
+        }   */ 
         #endregion
         #region Llenado Obj Padre de Familia
-        private void LlenadoObjPadreDeFamilia()
+       /* private void LlenadoObjPadreDeFamilia()
         {      
             //ObjEPadreDeFamilia.           
-        }
+        }   */
         #endregion
         #region Llenado Obj Tipo
-        private void LlenadoObjTipo()
-        {
+        /*private void LlenadoObjTipo()
+       {
             ObjEActor.ObjTipo.IdTipo = cmbTipo.SelectedIndex;
             ObjEActor.ObjTipo.Descripcion = cmbTipo.Text;
-        }
+        }  */
         #endregion
         #region VALIDACIONES
-        private bool CampoVacioR() //metodo para validar que no deje en blanco  usuario contraseña
+       /* private bool CampoVacioR() //metodo para validar que no deje en blanco  usuario contraseña
         {
 
 
@@ -223,83 +220,91 @@ namespace CPresentacion
 
             }
             return result;
-        }
+        }  */
         #endregion
 
 
         #region BOTON REGISTRAR
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-           
 
-            ValidacionPrincipal();
+            /*
+                  // ValidacionPrincipal();
+                   llenaObjetosRegistro();
+
+                   switch(tipoUsuario)
+                   {
+                       case 0:
+                           {
+                               NEmpleado objNEmpleado = new NEmpleado(ObjEEmpleado);                     
+
+                               if (ObjEEmpleado.IdEmpleado > 0)
+                               {
+                                   objNEmpleado.actualizaDatosEmpleado();
+                                   ObjEProblematica.idActor = ObjEEmpleado.IdActor;
+                               }                          
+                               else
+                               {
+                                   EEmpleado objEEmpleadoAlmacenado = new EEmpleado();
+                                   objEEmpleadoAlmacenado = objNEmpleado.almacenaDatosEmpleado();
+                                   ObjEProblematica.idActor = objEEmpleadoAlmacenado.IdActor;
+                               }
+
+                               break;
+                           }
+                       case 1:
+                           {
+                               NEstudiante objNEstudiante = new NEstudiante(ObjEEstudiante);
+                               if (ObjEEstudiante.IdEstudiante > 0)
+                               { 
+                               objNEstudiante.actualizaDatosEstudiante();
+                               ObjEProblematica.idActor = ObjEEstudiante.IdActor;
+                               }
+                               else
+                               {
+                                   EEstudiante objEEstudianteAlmacenado = new EEstudiante();
+                                   objEEstudianteAlmacenado = objNEstudiante.almacenaDatosEstudiante();
+                                   ObjEProblematica.idActor = objEEstudianteAlmacenado.IdActor;
+                               }                       
+                               break; 
+                           }
+                           case 3:
+                           {
+                               NActor ObjNActor = new NActor(ObjEActor);
+                               if (ObjEActor.IdActor > 0)
+                               {
+                                   ObjNActor.actualizaDatosActor();
+                                   ObjEProblematica.idActor = ObjEActor.IdActor; 
+                               }
+                               else                       
+                                 ObjEProblematica.idActor = ObjNActor.AlmacenaDatosActor();                                      
+
+
+                               break;
+                           }
+                   }  */
+
+
+
             llenaObjetosRegistro();
-
-            switch(cmbTipo.SelectedIndex)
-            {
-                case 0:
-                    {
-                        NEmpleado objNEmpleado = new NEmpleado(ObjEEmpleado);                     
-                       
-                        if (ObjEEmpleado.IdEmpleado > 0)
-                        {
-                            objNEmpleado.actualizaDatosEmpleado();
-                            ObjEProblematica.idActor = ObjEEmpleado.IdActor;
-                        }                          
-                        else
-                        {
-                            EEmpleado objEEmpleadoAlmacenado = new EEmpleado();
-                            objEEmpleadoAlmacenado = objNEmpleado.almacenaDatosEmpleado();
-                            ObjEProblematica.idActor = objEEmpleadoAlmacenado.IdActor;
-                        }
-                       
-                        break;
-                    }
-                case 1:
-                    {
-                        NEstudiante objNEstudiante = new NEstudiante(ObjEEstudiante);
-                        if (ObjEEstudiante.IdEstudiante > 0)
-                        { 
-                        objNEstudiante.actualizaDatosEstudiante();
-                        ObjEProblematica.idActor = ObjEEstudiante.IdActor;
-                        }
-                        else
-                        {
-                            EEstudiante objEEstudianteAlmacenado = new EEstudiante();
-                            objEEstudianteAlmacenado = objNEstudiante.almacenaDatosEstudiante();
-                            ObjEProblematica.idActor = objEEstudianteAlmacenado.IdActor;
-                        }                       
-                        break; 
-                    }
-                    case 3:
-                    {
-                        NActor ObjNActor = new NActor(ObjEActor);
-                        ObjEProblematica.idActor = ObjNActor.AlmacenaDatosActor();                        
-                        break;
-                    }
-            }
-
-
-         
-
 
             NProblematica ObjNProblematica = new NProblematica(ObjEProblematica);
             ObjEProblematica.ObjEAcceso = ObjEAcceso; 
 
-            if (ObjEProblematica.idActor > 0)         
+         /*   if (ObjEProblematica.idActor > 0)         
               MessageBox.Show("Usuario Guardado");             
             else
-                MessageBox.Show("Ocurrio un error");
+                MessageBox.Show("Ocurrio un error");   */
 
          
             if (ObjNProblematica.AlmacenaDatosProblematica())
-                MessageBox.Show("Problematica Guardado");
+                MessageBox.Show("Problematica Guardada correctamente");
             else
-                MessageBox.Show("Ocurrio un error Problematica");
+                MessageBox.Show("Ocurrio un error Problematica al guardar la problematica");
           
             limpiarControles();
             txtClaveSeguimiento.Text = Convert.ToString(getIdSiguienteProblematica());
-            txtNombreR.Focus();
+           // txtNombreR.Focus();
 
 
 
@@ -308,7 +313,7 @@ namespace CPresentacion
         #region EVENTO- INDEX CHANGE
         private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-          switch(cmbTipo.SelectedIndex)
+         /* switch(cmbTipo.SelectedIndex)
             {
                 case 0:
                  {
@@ -344,11 +349,11 @@ namespace CPresentacion
                         determinaVisibilidadTextBox(false, false, false, false);
                         break;
                     }
-            }
+            } */
         }
         #endregion
         #region DETERMINA VISIBILIDAD
-        private  void determinaVisibilidadEtiquetas(bool L1, bool L2, bool L3, bool L4)
+       /* private  void determinaVisibilidadEtiquetas(bool L1, bool L2, bool L3, bool L4)
         {
             if (L1)
                 lblTipo1.Visible = true;
@@ -395,7 +400,7 @@ namespace CPresentacion
             else
                 txtTipo4.Visible = false;
 
-        }
+        }  */
 
         #endregion
         #region GET SEMAFORO
@@ -416,27 +421,27 @@ namespace CPresentacion
         private void limpiarControles()
         {
             txtActoresInvolucrados.Clear();
-            txtApellidoMR.Clear();
-            txtApellidoPR.Clear();
+            //txtApellidoMR.Clear();
+            //txtApellidoPR.Clear();
             //txtClaveSeguimiento.Clear();
             txtComentarios.Clear();
             txtConclusion.Clear();
-            txtCorreoR.Clear();
+            //txtCorreoR.Clear();
             txtEvaluacion.Clear();
-            txtNombreR.Clear();
+            //txtNombreR.Clear();
             txtProcedimientos.Clear();
             txtResponsableDeSolucion.Clear();
             txtSatisfaccion.Clear();
             txtSeguimiento.Clear();
             txtSituacion.Clear();
-            txtTelefono.Clear();
+            //txtTelefono.Clear();
             txtTema.Clear();
-            txtTipo1.Clear();
-            txtTipo2.Clear();
-            txtTipo3.Clear();
-            txtTipo4.Clear();
+            //txtTipo1.Clear();
+            //txtTipo2.Clear();
+            //txtTipo3.Clear();
+            //txtTipo4.Clear();
 
-            cmbTipo.SelectedIndex = 0;
+            //cmbTipo.SelectedIndex = 0;
             rbnVerde.Checked = true;
             
 
@@ -454,7 +459,7 @@ namespace CPresentacion
         #region EVENTO VALIDATED APELLIDOM
         private void txtApellidoMR_Validated(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtApellidoMR.Text)) return;
+         /*   if (string.IsNullOrEmpty(txtApellidoMR.Text)) return;
             switch (cmbTipo.SelectedIndex)
             {
                 case 0:
@@ -476,14 +481,14 @@ namespace CPresentacion
                         llenaControlesEstudiante();
                         break;
                     }
-            }
+            }  */
            
         }
         #endregion
         #region EVENTO VALIDATED Clave - Matricula
         private void txtTipo1_Validated(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtTipo1.Text)) return;
+          /*  if (string.IsNullOrEmpty(txtTipo1.Text)) return;
 
             switch (cmbTipo.SelectedIndex)
             {
@@ -499,11 +504,11 @@ namespace CPresentacion
                         llenaControlesEstudiante();
                         break;
                     }
-            }
+            } */
         }
         #endregion
         #region LLENA CONTROLES DEL ESTUDIANTE
-        private void llenaControlesEstudiante()
+       /* private void llenaControlesEstudiante()
         {
             NEstudiante objNEstudiante = new NEstudiante(ObjEEstudiante);
             ObjEEstudiante = objNEstudiante.getDatosEstudiante();
@@ -520,12 +525,12 @@ namespace CPresentacion
                 txtApellidoMR.Text = ObjEEstudiante.Apellido2;
                 txtCorreoR.Text = ObjEEstudiante.Correo;
                 txtTelefono.Text = ObjEEstudiante.Telefono.ToString();
-            }
+            }  
          
-        }
+        }  */
         #endregion
         #region LLENA CONTROLES DEL EMPLEADO
-        private void llenaControlesEmpleado()
+      /*  private void llenaControlesEmpleado()
         {
             NEmpleado objNEmpleado = new NEmpleado(ObjEEmpleado);
             ObjEEmpleado = objNEmpleado.getDatosEmpleado();
@@ -544,7 +549,7 @@ namespace CPresentacion
                 txtTelefono.Text = ObjEEmpleado.Telefono.ToString();
             }
 
-        }
+        }  */
         #endregion
         #region BOTON LIMPIAR
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -555,7 +560,7 @@ namespace CPresentacion
         #region LLENA LOS OBJETOS PARA EL REGISTRO
         private void llenaObjetosRegistro()
         {
-            LlenaObjActor();
+           /* LlenaObjActor();
             switch (cmbTipo.SelectedIndex)
             {
                 case 0:
@@ -569,7 +574,7 @@ namespace CPresentacion
                         LlenaObjEstudiante();
                         break;
                     }
-            }
+            }  */
 
             LlenaObjProblematica();
         }

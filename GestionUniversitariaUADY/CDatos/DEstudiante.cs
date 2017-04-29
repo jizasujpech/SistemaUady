@@ -100,6 +100,89 @@ namespace CDatos
              return ObjEEstudiannteDevuelto; 
         }
         #endregion
+        #region Obten Datos del Usuario/Get. DATATABLE 
+        //Se obtiene los datos del usuario por medio de objEacceso que se creo en el constructor
+        public DataTable GetDatosEstudiante_DataTable()
+        {
+            DataTable dtResult = new DataTable();           
+            try
+            {
+                ConexionesABD objConexionABD = new ConexionesABD();
+                Meconecto = objConexionABD.Meconecto;
+                string query = getSelect();
+
+                Comandosql = new SqlCommand(query, Meconecto);             
+
+                // Assumes that connection is a valid SqlConnection object.
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, Meconecto);
+
+                if (!string.IsNullOrEmpty(ObjEEstudiante.Matricula))
+                    adapter.SelectCommand.Parameters.AddWithValue("@MatriculaP", ObjEEstudiante.Matricula);
+                else
+                {
+                    if (!String.IsNullOrEmpty(ObjEEstudiante.Nombre))
+                        adapter.SelectCommand.Parameters.AddWithValue("@NombreP", ObjEEstudiante.Nombre);
+
+                    if (!String.IsNullOrEmpty(ObjEEstudiante.Apellido1))
+                        adapter.SelectCommand.Parameters.AddWithValue("@Apellido1P", ObjEEstudiante.Apellido1);
+
+                    if (!String.IsNullOrEmpty(ObjEEstudiante.Apellido2))
+                        adapter.SelectCommand.Parameters.AddWithValue("@Apellido2P", ObjEEstudiante.Apellido2);
+                }
+
+
+                adapter.Fill(dtResult);
+                objConexionABD.CerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return dtResult;
+        }
+        #endregion
+        #region GET SELECT
+        private string getSelect()
+        {
+            string result = string.Empty;
+
+           result =  "Select  * from [Estudiante] LEFT JOIN Actor ON Actor.IdActor = Estudiante.IdActor where ";//@ para parametros
+
+            if (!string.IsNullOrEmpty(ObjEEstudiante.Matricula))
+
+                result += "Estudiante.Matricula = @MatriculaP";
+            else
+            {
+                string where = String.Empty;
+
+                if (!String.IsNullOrEmpty(ObjEEstudiante.Nombre))
+                    where = "Actor.Nombre = @NombreP ";
+
+                if (!String.IsNullOrEmpty(ObjEEstudiante.Apellido1))
+                {
+                    if (!String.IsNullOrEmpty(where))
+                        where += "AND ";
+
+                    where += "Actor.Apellido1 = @Apellido1P ";
+                }
+
+                if (!String.IsNullOrEmpty(ObjEEstudiante.Apellido2))
+                {
+                    if (!String.IsNullOrEmpty(where))
+                        where += "AND ";
+
+                    where += "Actor.Apellido2 = @Apellido2P ";
+                }
+
+                result += where;
+            }
+
+
+            return result;
+        }
+        #endregion
 
         #region INSERTA DATOS ESTUDIANTE
         public EEstudiante AlmacenaDatosEstudiante()

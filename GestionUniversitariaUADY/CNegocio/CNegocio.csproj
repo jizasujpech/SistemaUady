@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fabricas.cs" />
     <Compile Include="NAcceso.cs" />
     <Compile Include="NActor.cs" />
     <Compile Include="NEmpleado.cs" />

@@ -35,7 +35,7 @@ namespace CPresentacion
                 {
                     MessageBox.Show("USUARIO VALIDO");
 
-                    FiltroProblematica objFiltroProblematica = new FiltroProblematica();
+                    FiltroProblematica objFiltroProblematica = new FiltroProblematica(ObjDAcceso);
                     objFiltroProblematica.Show();
 
 

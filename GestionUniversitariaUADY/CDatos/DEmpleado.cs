@@ -58,7 +58,7 @@ namespace CDatos
                         if (!String.IsNullOrEmpty(where))
                             where += "AND ";
 
-                        where += "AND Actor.Apellido2 = @Apellido2P ";
+                        where += "Actor.Apellido2 = @Apellido2P ";
                     }
 
                     query += where;
@@ -130,8 +130,7 @@ namespace CDatos
         #region Obten Datos del Usuario/Get. DATATABLE 
         //Se obtiene los datos del usuario por medio de objEacceso que se creo en el constructor
         public DataTable GetDatosEmpleado_DataTable()
-        {
-            // EEmpleado ObjEEmpleadoteDevuelto = new EEmpleado();
+        {           
             DataTable dtResult = new DataTable();
             try
             {
@@ -162,17 +161,14 @@ namespace CDatos
                         if (!String.IsNullOrEmpty(where))
                             where += "AND ";
 
-                        where += "AND Actor.Apellido2 = @Apellido2P ";
+                        where += "Actor.Apellido2 = @Apellido2P ";
                     }
 
                     query += where;    
                 }
                     
 
-                Comandosql = new SqlCommand(query, Meconecto);
-
-
-              //  DataSet DatasetLleno = new DataSet();
+                Comandosql = new SqlCommand(query, Meconecto);           
 
                 // Assumes that connection is a valid SqlConnection object.
 
@@ -192,35 +188,7 @@ namespace CDatos
                         adapter.SelectCommand.Parameters.AddWithValue("@Apellido2P", ObjEEmpleado.Apellido2);
                 }
 
-
-
-
-
-                //  DataSet DSUsuario = new DataSet();// dataset de usuario
-                adapter.Fill(dtResult);
-
-               /* if (DatasetLleno.Tables[0].Rows.Count > 0)
-                {
-                    DataRow DrLleno = DatasetLleno.Tables[0].Rows[0];
-                    ObjEEmpleadoteDevuelto.IdEmpleado = Convert.ToInt32(DrLleno["IdEmpleado"]);
-                    ObjEEmpleadoteDevuelto.Puesto = DrLleno["Puesto"].ToString();
-                    ObjEEmpleadoteDevuelto.ClaveEmpleado = DrLleno["ClaveEmpleado"].ToString();
-                    ObjEEmpleadoteDevuelto.Dependencia = DrLleno["Dependencia"].ToString();
-                    //ObjEEmpleadoteDevuelto.IdTipo = Convert.ToInt32(DrLleno["IdTipo"]);
-                    ObjEEmpleadoteDevuelto.Area = DrLleno["Area"].ToString();
-                    ObjEEmpleadoteDevuelto.IdActor = Convert.ToInt32(DrLleno["IdActor"]);
-
-                    ObjEEmpleadoteDevuelto.IdActor = Convert.ToInt32(DrLleno["IdActor"]);
-                    ObjEEmpleadoteDevuelto.Nombre = DrLleno["Nombre"].ToString();
-                    ObjEEmpleadoteDevuelto.Apellido1 = DrLleno["Apellido1"].ToString();
-                    ObjEEmpleadoteDevuelto.Apellido2 = DrLleno["Apellido2"].ToString();
-                    ObjEEmpleadoteDevuelto.Correo = DrLleno["Correo"].ToString();
-                    ObjEEmpleadoteDevuelto.Telefono = Convert.ToInt64(DrLleno["Telefono"]);
-
-                    ObjEEmpleadoteDevuelto.ObjTipo.IdTipo = Convert.ToInt32(DrLleno["IdTipo"]);
-                }*/
-
-
+                adapter.Fill(dtResult);           
 
                 objConexionABD.CerrarConexion();
             }

@@ -25,7 +25,7 @@ namespace CNegocio
             return objDEmpleado.GetDatosEmpleado();
         }
         #endregion
-        #region GET DATOS EMPLEADO
+        #region GET DATOS EMPLEADO DATATABLE
         public DataTable getDatosEmpleado_DataTable()
         {
             DEmpleado objDEmpleado = new DEmpleado(objEEmpleado);

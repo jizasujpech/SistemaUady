@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 using CEntidades;
 using CDatos;
@@ -22,5 +23,19 @@ namespace CNegocio
             return ObjDActor.AlmacenaDatosActor();
             
         }
+        #region GET DATOS ACTOR DATATABLE
+        public DataTable getDatosActor_DataTable()
+        {
+            DActor objDActor = new DActor(ObjEActor);
+            return objDActor.GetDatosActor_DataTable();
+        }
+        #endregion
+        #region MODIFICA DATOS ACTOR
+        public bool actualizaDatosActor()
+        {
+            DActor objDatosActor = new DActor(ObjEActor);
+            return objDatosActor.actualizaDatosActor();
+        }
+        #endregion
     }
 }

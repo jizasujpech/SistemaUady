@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 using CEntidades;
 using CDatos;
@@ -23,6 +24,13 @@ namespace CNegocio
         {
             DEstudiante objDEstudiante = new DEstudiante(objEEstudiante);
             return objDEstudiante.GetDatosEstudiante();
+        }
+        #endregion
+        #region GET DATOS ESTUDIANTE DATATABLE
+        public DataTable getDatosEstudiante_DataTable()
+        {
+            DEstudiante objDEstudiante = new DEstudiante(objEEstudiante);
+            return objDEstudiante.GetDatosEstudiante_DataTable();
         }
         #endregion
 

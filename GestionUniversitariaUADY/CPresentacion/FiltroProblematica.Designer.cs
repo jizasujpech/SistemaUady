@@ -75,6 +75,7 @@
             // 
             this.btnRegistrarSolicitud.BackColor = System.Drawing.Color.CadetBlue;
             this.btnRegistrarSolicitud.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRegistrarSolicitud.Enabled = false;
             this.btnRegistrarSolicitud.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistrarSolicitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarSolicitud.ForeColor = System.Drawing.SystemColors.ButtonHighlight;

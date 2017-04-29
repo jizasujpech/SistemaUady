@@ -109,6 +109,7 @@
             this.label6.Size = new System.Drawing.Size(42, 17);
             this.label6.TabIndex = 44;
             this.label6.Text = "Correo";
+            this.label6.Visible = false;
             // 
             // txtNombreR
             // 
@@ -117,6 +118,7 @@
             this.txtNombreR.Name = "txtNombreR";
             this.txtNombreR.Size = new System.Drawing.Size(337, 23);
             this.txtNombreR.TabIndex = 0;
+            this.txtNombreR.Visible = false;
             // 
             // txtCorreoR
             // 
@@ -125,6 +127,7 @@
             this.txtCorreoR.Name = "txtCorreoR";
             this.txtCorreoR.Size = new System.Drawing.Size(337, 23);
             this.txtCorreoR.TabIndex = 4;
+            this.txtCorreoR.Visible = false;
             // 
             // label1
             // 
@@ -135,6 +138,7 @@
             this.label1.Size = new System.Drawing.Size(48, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre";
+            this.label1.Visible = false;
             // 
             // txtTelefono
             // 
@@ -143,6 +147,7 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(337, 23);
             this.txtTelefono.TabIndex = 3;
+            this.txtTelefono.Visible = false;
             // 
             // cmbTipo
             // 
@@ -155,6 +160,7 @@
             this.cmbTipo.Name = "cmbTipo";
             this.cmbTipo.Size = new System.Drawing.Size(337, 25);
             this.cmbTipo.TabIndex = 5;
+            this.cmbTipo.Visible = false;
             this.cmbTipo.SelectedIndexChanged += new System.EventHandler(this.cmbTipo_SelectedIndexChanged);
             // 
             // txtApellidoMR
@@ -164,6 +170,7 @@
             this.txtApellidoMR.Name = "txtApellidoMR";
             this.txtApellidoMR.Size = new System.Drawing.Size(337, 23);
             this.txtApellidoMR.TabIndex = 2;
+            this.txtApellidoMR.Visible = false;
             this.txtApellidoMR.Validated += new System.EventHandler(this.txtApellidoMR_Validated);
             // 
             // label2
@@ -175,6 +182,7 @@
             this.label2.Size = new System.Drawing.Size(57, 17);
             this.label2.TabIndex = 36;
             this.label2.Text = "Apellido P";
+            this.label2.Visible = false;
             // 
             // txtApellidoPR
             // 
@@ -183,6 +191,7 @@
             this.txtApellidoPR.Name = "txtApellidoPR";
             this.txtApellidoPR.Size = new System.Drawing.Size(337, 23);
             this.txtApellidoPR.TabIndex = 1;
+            this.txtApellidoPR.Visible = false;
             // 
             // label3
             // 
@@ -193,6 +202,7 @@
             this.label3.Size = new System.Drawing.Size(60, 17);
             this.label3.TabIndex = 37;
             this.label3.Text = "Apellido M";
+            this.label3.Visible = false;
             // 
             // label5
             // 
@@ -203,6 +213,7 @@
             this.label5.Size = new System.Drawing.Size(29, 17);
             this.label5.TabIndex = 39;
             this.label5.Text = "Tipo";
+            this.label5.Visible = false;
             // 
             // label4
             // 
@@ -213,6 +224,7 @@
             this.label4.Size = new System.Drawing.Size(49, 17);
             this.label4.TabIndex = 38;
             this.label4.Text = "Telefono";
+            this.label4.Visible = false;
             // 
             // txtTipo1
             // 
@@ -221,6 +233,7 @@
             this.txtTipo1.Name = "txtTipo1";
             this.txtTipo1.Size = new System.Drawing.Size(337, 23);
             this.txtTipo1.TabIndex = 6;
+            this.txtTipo1.Visible = false;
             this.txtTipo1.Validated += new System.EventHandler(this.txtTipo1_Validated);
             // 
             // lblTipo1
@@ -232,6 +245,7 @@
             this.lblTipo1.Size = new System.Drawing.Size(36, 17);
             this.lblTipo1.TabIndex = 45;
             this.lblTipo1.Text = "Clave";
+            this.lblTipo1.Visible = false;
             // 
             // txtTipo4
             // 
@@ -240,6 +254,7 @@
             this.txtTipo4.Name = "txtTipo4";
             this.txtTipo4.Size = new System.Drawing.Size(337, 23);
             this.txtTipo4.TabIndex = 9;
+            this.txtTipo4.Visible = false;
             // 
             // txtTipo3
             // 
@@ -248,6 +263,7 @@
             this.txtTipo3.Name = "txtTipo3";
             this.txtTipo3.Size = new System.Drawing.Size(337, 23);
             this.txtTipo3.TabIndex = 8;
+            this.txtTipo3.Visible = false;
             // 
             // lblTipo2
             // 
@@ -258,6 +274,7 @@
             this.lblTipo2.Size = new System.Drawing.Size(72, 17);
             this.lblTipo2.TabIndex = 49;
             this.lblTipo2.Text = "Dependencia";
+            this.lblTipo2.Visible = false;
             // 
             // txtTipo2
             // 
@@ -266,6 +283,7 @@
             this.txtTipo2.Name = "txtTipo2";
             this.txtTipo2.Size = new System.Drawing.Size(337, 23);
             this.txtTipo2.TabIndex = 7;
+            this.txtTipo2.Visible = false;
             // 
             // lblTipo
             // 
@@ -276,6 +294,7 @@
             this.lblTipo.Size = new System.Drawing.Size(32, 17);
             this.lblTipo.TabIndex = 50;
             this.lblTipo.Text = "Area";
+            this.lblTipo.Visible = false;
             // 
             // lblTipo4
             // 
@@ -286,6 +305,7 @@
             this.lblTipo4.Size = new System.Drawing.Size(42, 17);
             this.lblTipo4.TabIndex = 51;
             this.lblTipo4.Text = "Puesto";
+            this.lblTipo4.Visible = false;
             // 
             // btnRegistrar
             // 
