@@ -122,7 +122,7 @@ namespace CDatos
                 else
                 {
                     if (!String.IsNullOrEmpty(ObjEEstudiante.Nombre))
-                        adapter.SelectCommand.Parameters.AddWithValue("@NombreP", ObjEEstudiante.Nombre);
+                        adapter.SelectCommand.Parameters.AddWithValue("@NombreP", "%" + ObjEEstudiante.Nombre + "%");
 
                     if (!String.IsNullOrEmpty(ObjEEstudiante.Apellido1))
                         adapter.SelectCommand.Parameters.AddWithValue("@Apellido1P", ObjEEstudiante.Apellido1);
@@ -158,7 +158,7 @@ namespace CDatos
                 string where = String.Empty;
 
                 if (!String.IsNullOrEmpty(ObjEEstudiante.Nombre))
-                    where = "Actor.Nombre = @NombreP ";
+                    where = "Actor.Nombre LIKE @NombreP ";
 
                 if (!String.IsNullOrEmpty(ObjEEstudiante.Apellido1))
                 {

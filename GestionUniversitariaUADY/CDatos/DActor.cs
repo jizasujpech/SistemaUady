@@ -100,7 +100,7 @@ namespace CDatos
 
                
                     if (!String.IsNullOrEmpty(ObjEActor.Nombre))
-                        adapter.SelectCommand.Parameters.AddWithValue("@NombreP", ObjEActor.Nombre);
+                        adapter.SelectCommand.Parameters.AddWithValue("@NombreP", "%" + ObjEActor.Nombre + "%");
 
                     if (!String.IsNullOrEmpty(ObjEActor.Apellido1))
                         adapter.SelectCommand.Parameters.AddWithValue("@Apellido1P", ObjEActor.Apellido1);
@@ -131,7 +131,7 @@ namespace CDatos
                 string where = String.Empty;
 
                 if (!String.IsNullOrEmpty(ObjEActor.Nombre))
-                    where = "Actor.Nombre = @NombreP ";
+                    where = "Actor.Nombre LIKE @NombreP ";
 
                 if (!String.IsNullOrEmpty(ObjEActor.Apellido1))
                 {
@@ -149,7 +149,17 @@ namespace CDatos
                     where += "Actor.Apellido2 = @Apellido2P ";
                 }
 
-                result += where;           
+                result += where;
+
+            if (!string.IsNullOrEmpty(result))
+                result += "AND ";
+
+            result += @" NOT EXISTS (SELECT IdActor FROM   Empleado WHERE  Actor.IdActor = Empleado.IdActor)
+                      AND
+                      NOT EXISTS(SELECT IdActor FROM   Estudiante WHERE  Actor.IdActor = Estudiante.IdActor)
+                      AND
+                      NOT EXISTS(SELECT IdActor FROM   PadreDeFamilia WHERE  Actor.IdActor = PadreDeFamilia.IdActor)";
+
 
 
             return result;
